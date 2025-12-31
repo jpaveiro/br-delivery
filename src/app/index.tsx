@@ -1,5 +1,5 @@
-import Navbar from "@/components/navbar";
-import TopBar from "@/components/topbar";
+import Navbar from "@/src/components/navbar";
+import TopBar from "@/src/components/topbar";
 import { theme } from '@/theme';
 import { StyleSheet, Text, View } from "react-native";
 
