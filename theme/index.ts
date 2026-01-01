@@ -10,6 +10,7 @@ export const theme = {
         medium: 'System',
         bold: 'System',
         size: {
+            tiny: 10,
             small: 12,
             regular: 16,
             large: 20,
