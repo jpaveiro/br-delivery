@@ -4,12 +4,16 @@ import { theme } from "@/theme";
 
 export const styles = StyleSheet.create({
     wrapper: {
-        position: 'fixed',
+        top: 0,
+        position: 'absolute',
         width: '100%',
         paddingTop: 60,
         paddingBottom: 20,
         justifyContent: 'center',
         alignItems: 'center',
+        backgroundColor: '#ffffffff',
+        overflow: 'hidden',
+        zIndex: 1000
     },
     address: {
         color: theme.colors.text,
