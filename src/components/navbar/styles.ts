@@ -1,5 +1,5 @@
+import { theme } from '@/theme';
 import { StyleSheet } from "react-native";
-
 
 export const styles = StyleSheet.create({
     wrapper: {
@@ -7,23 +7,26 @@ export const styles = StyleSheet.create({
         bottom: 0,
         left: 0,
         right: 0,
-        padding: 20,
+        paddingTop: 10,
+        paddingVertical: 20,
+        paddingBottom: 20,
         flexDirection: 'row',
         justifyContent: 'space-around',
         alignItems: 'center',
         borderTopWidth: 1,
-        borderTopColor: '#eee'
+        borderTopColor: '#eee',
+        backgroundColor: '#ffffffff',
+        overflow: 'hidden',
+        zIndex: 1000
     },
     iconContainer: {
       alignItems: 'center',
       justifyContent: 'center',
-      paddingHorizontal: 8,
-      paddingVertical: 4,
   },
 
   label: {
-    fontSize: 12,
+    fontSize: theme.fonts.size.tiny,
     color: '#666',
-    fontWeight: '500',
+    paddingTop: 6
   }
 });
