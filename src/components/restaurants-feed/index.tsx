@@ -1,11 +1,11 @@
 import api from '@/src/services/http-service';
 import { useEffect, useState } from "react";
-import { Text, View } from "react-native";
+import { Image, Text, View } from "react-native";
 
 interface Restaurant {
     id: number;
-    title: string
-    thumbnailUrl: string
+    title: string;
+    thumbnailUrl: string;
 }
 
 export default function RestaurantsFeed() {
@@ -16,16 +16,17 @@ export default function RestaurantsFeed() {
 
         const handleFetch = async () => {
             try {
-                const response = await api.request<Restaurant[]>({
-                    url: '/photos', // Adaptação temporária, TODO: Trocar API para a correta
-                    method: 'get',
-                    signal: controller.signal
+                const restaurants = await api.request<Restaurant[], Restaurant[]>({
+                url: "/photos",
+                method: "get",
+                signal: controller.signal,
                 });
-                setData(response.data)
+
+                setData(restaurants);
+
             } catch (error) {
                 const err = error as any;
                 if (err?.code === 'ERR_CANCELED') return;
-
             }
         };
 
@@ -36,6 +37,16 @@ export default function RestaurantsFeed() {
     
     return (
         <View>
+            {data.slice(0, 20).map(r => (
+                <View key={r.id}>
+                    <Image 
+                        source={{ uri: "https://upload.wikimedia.org/wikipedia/pt/b/bf/SpongeBob_SquarePants_personagem.png"}}
+                        resizeMode='cover'
+                        onError={(e) => console.log(e)}
+                        style= {{ width: 100, height: 100 }}/>
+                    <Text>{r.title}</Text>
+                </View>
+            ))}
         </View>
     )
 }
