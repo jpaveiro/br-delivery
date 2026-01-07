@@ -1,7 +1,7 @@
 import api from '@/src/services/http-service';
 import { useEffect, useState } from "react";
 import { Image, Text, View } from "react-native";
-
+import { styles } from './styles';
 interface Restaurant {
     id: number;
     title: string;
@@ -37,16 +37,19 @@ export default function RestaurantsFeed() {
     
     return (
         <View>
-            {data.slice(0, 20).map(r => (
-                <View key={r.id}>
-                    <Image 
-                        source={{ uri: "https://upload.wikimedia.org/wikipedia/pt/b/bf/SpongeBob_SquarePants_personagem.png"}}
-                        resizeMode='cover'
-                        onError={(e) => console.log(e)}
-                        style= {{ width: 100, height: 100 }}/>
-                    <Text>{r.title}</Text>
-                </View>
-            ))}
+            <View style={styles.contentWrapper}>
+                {data.slice(0, 20).map(r => (
+                    <View style={styles.restaurantContainer} key={r.id}>
+                        <Image 
+                            source={{ uri: "https://upload.wikimedia.org/wikipedia/pt/b/bf/SpongeBob_SquarePants_personagem.png"}}
+                            resizeMode='cover'
+                            alt='img'
+                            onError={(e) => console.log(e)}
+                            style={styles.image}/>
+                        <Text style={styles.label}>{r.id}</Text>
+                    </View>
+                ))}
+            </View>
         </View>
     )
 }
