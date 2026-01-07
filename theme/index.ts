@@ -13,6 +13,7 @@ export const theme = {
             tiny: 10,
             small: 12,
             regular: 16,
+            medium: 18,
             large: 20,
             title: 24
         }
